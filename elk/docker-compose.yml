@@ -2,7 +2,7 @@ version: '2'
 services:
   
   kibana: 
-    image: kibana:5.0.0-alpha5
+    image: kibana:5.0.0-rc1
     networks:
       monitoring:
         aliases:
@@ -18,10 +18,10 @@ services:
         max-file: "5"
 
   elasticsearch: 
-    image: elasticsearch:5.0.0-alpha5
+    image: elasticsearch:5.0.0-rc1
     command: "-E bootstrap.ignore_system_bootstrap_checks=true" # TODO check on beta/realease 5
     environment:
-      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+      ES_JAVA_OPTS: "-Xms2g -Xmx2g"
     networks: 
       monitoring:
         aliases:
@@ -34,7 +34,7 @@ services:
 
   # TODO : https://hub.docker.com/_/logstash/
   logstash:
-    image: logstash:5.0.0-alpha5-1
+    image: logstash:5.0.0-rc1-1
     networks:
       monitoring:
         aliases:
